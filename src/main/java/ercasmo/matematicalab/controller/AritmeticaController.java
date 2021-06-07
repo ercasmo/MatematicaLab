@@ -12,8 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class AritmeticaController {
 
     @GetMapping("/suma/{uno}/dos")
-    public ResponseEntity findStatusByClave(@PathVariable double uno, double dos) {
+    public ResponseEntity suma(@PathVariable double uno, double dos) {
         return new ResponseEntity<>(uno+dos, HttpStatus.OK);
+    }
+
+    @GetMapping("/resta/{uno}/dos")
+    public ResponseEntity resta(@PathVariable double uno, double dos) {
+        return new ResponseEntity<>(uno-dos, HttpStatus.OK);
     }
 
 }
