@@ -30,6 +30,4 @@ public class AritmeticaController {
     public ResponseEntity division(@PathVariable double uno, double dos) {
         return new ResponseEntity<>(uno/dos, HttpStatus.OK);
     }
-
-
 }
