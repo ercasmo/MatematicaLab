@@ -21,4 +21,13 @@ public class AritmeticaController {
         return new ResponseEntity<>(uno-dos, HttpStatus.OK);
     }
 
+    @GetMapping("/multiplicacion/{uno}/dos")
+    public ResponseEntity multiplicacion(@PathVariable double uno, double dos) {
+        return new ResponseEntity<>(uno*dos, HttpStatus.OK);
+    }
+
+    @GetMapping("/division/{uno}/dos")
+    public ResponseEntity division(@PathVariable double uno, double dos) {
+        return new ResponseEntity<>(uno/dos, HttpStatus.OK);
+    }
 }
