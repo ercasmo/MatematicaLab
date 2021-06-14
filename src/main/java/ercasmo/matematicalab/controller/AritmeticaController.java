@@ -1,5 +1,7 @@
 package ercasmo.matematicalab.controller;
 
+import ercasmo.matematicalab.service.AirtmeticaService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,29 +17,31 @@ import java.util.Map;
 @RestController
 @RequestMapping("/aritmetica")
 public class AritmeticaController {
+    @Autowired
+    AirtmeticaService airtmeticaService;
 
     @GetMapping("/suma/{uno}/{dos}")
     public ResponseEntity suma(@PathVariable BigDecimal uno,@PathVariable BigDecimal dos) {
-        BigDecimal resultado=uno.add(dos, MathContext.DECIMAL128);
+        BigDecimal resultado=airtmeticaService.sumar(uno,dos);
         return new ResponseEntity<>(resultado, HttpStatus.OK);
     }
 
     @GetMapping("/resta/{uno}/{dos}")
     public ResponseEntity resta(@PathVariable BigDecimal uno, @PathVariable BigDecimal dos) {
-        BigDecimal resultado=uno.subtract(dos, MathContext.DECIMAL128);
+        BigDecimal resultado=airtmeticaService.restar(uno,dos);
         return new ResponseEntity<>(resultado, HttpStatus.OK);
     }
 
     @GetMapping("/multiplicacion/{uno}/{dos}")
     public ResponseEntity multiplicacion(@PathVariable BigDecimal uno, @PathVariable BigDecimal dos) {
-        BigDecimal resultado=uno.multiply(dos, MathContext.DECIMAL128);
+        BigDecimal resultado=airtmeticaService.multiplicar(uno,dos);
         return new ResponseEntity<>(resultado, HttpStatus.OK);
     }
 
     @GetMapping("/division")
     public ResponseEntity division(@RequestParam("divisor")   BigDecimal divisor, @RequestParam("dividendo") BigDecimal dividendo) {
         if(dividendo.compareTo(BigDecimal.ZERO)!=0) {
-            BigDecimal resultado = divisor.divide(dividendo, MathContext.DECIMAL128);
+            BigDecimal resultado=airtmeticaService.dividir(divisor,dividendo);
             return new ResponseEntity<>(resultado, HttpStatus.OK);
         }else{
             Map<String,String> errores=new LinkedHashMap<>();
