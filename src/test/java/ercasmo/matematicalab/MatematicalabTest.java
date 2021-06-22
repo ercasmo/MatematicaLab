@@ -1,13 +1,12 @@
 package ercasmo.matematicalab;
-
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MatematicalabApplicationTests {
+public class MatematicalabTest {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }

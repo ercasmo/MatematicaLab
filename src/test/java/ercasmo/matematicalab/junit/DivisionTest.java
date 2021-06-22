@@ -1,4 +1,4 @@
-package ercasmo.matematicalab;
+package ercasmo.matematicalab.junit;
 
 import ercasmo.matematicalab.service.AirtmeticaService;
 import org.junit.Assert;
